@@ -45,3 +45,35 @@ This version uses keyword-based retrieval rather than
 semantic RAG. LLM-controlled ReAct reasoning, Tree-of-Thought,
 multi-agent coordination, and advanced safety checks are
 planned for subsequent development phases.
+
+
+### Phase 1B — LLM-Driven ReAct Research
+
+InsightForge now includes an OpenRouter-powered
+ReAct-style research workflow.
+
+Implemented capabilities:
+- LLM-selected research actions (search or finish)
+- Read-only synthetic evidence search
+- Structured action validation
+- Short-term observation history
+- Maximum four-step research loop
+- Duplicate query prevention
+- Action and observation execution trace
+- Source-backed extractive research reports
+- Automated tests using simulated model decisions
+
+The agent uses the existing CMU ResearchAgent
+data structures and reuses the synthetic
+research tool developed in Phase 1A.
+
+#### Current Limitations
+
+Retrieval is currently keyword-based rather than
+semantic RAG. The final research brief uses extractive
+summarization rather than LLM-generated comparative
+recommendations.
+
+Tree-of-Thought, four-agent coordination, and
+additional evaluation guardrails will be implemented
+in later phases.
