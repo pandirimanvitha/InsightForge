@@ -1,0 +1,74 @@
+[
+  {
+    "id": "SYN-001",
+    "title": "High-severity routing approval policy",
+    "source_type": "synthetic_policy",
+    "viewpoint": "mandatory_constraint",
+    "date": "2026-11-19",
+    "hard_requirement": true,
+    "text": "In this hypothetical company, P0 and P1 high-severity incidents require human approval before any AI-recommended team routing is applied. The assistant may suggest a team but must not perform routing changes."
+  },
+  {
+    "id": "SYN-002",
+    "title": "Manual incident triage workload",
+    "source_type": "synthetic_interview",
+    "viewpoint": "potential_benefit",
+    "date": "2026-11-19",
+    "hard_requirement": false,
+    "text": "In this fictional engineering scenario, repeated manual categorization and ticket routing are considered time-consuming. The company wants to test whether suggestions could reduce effort; no performance improvement has been measured."
+  },
+  {
+    "id": "SYN-003",
+    "title": "Risk of incorrect incident classification",
+    "source_type": "synthetic_risk_note",
+    "viewpoint": "risk",
+    "date": "2026-11-19",
+    "hard_requirement": false,
+    "text": "Incorrectly classifying or routing an incident may delay response. A safe pilot should include uncertainty flags, a manual fallback, and a method for engineers to correct suggestions."
+  },
+  {
+    "id": "SYN-004",
+    "title": "Option A: rule-based triage",
+    "source_type": "synthetic_design_option",
+    "viewpoint": "alternative",
+    "date": "2026-11-19",
+    "hard_requirement": false,
+    "text": "Rule-based incident classification uses explicit patterns and routing rules. It is easy to audit but may require maintenance when incident descriptions or team ownership change."
+  },
+  {
+    "id": "SYN-005",
+    "title": "Option B: RAG-assisted classification",
+    "source_type": "synthetic_design_option",
+    "viewpoint": "alternative",
+    "date": "2026-11-19",
+    "hard_requirement": false,
+    "text": "RAG-assisted incident categorization retrieves relevant runbooks and resolved ticket examples to ground an LLM suggestion. Retrieval quality and up-to-date documents remain important constraints."
+  },
+  {
+    "id": "SYN-006",
+    "title": "Option C: agentic incident investigation",
+    "source_type": "synthetic_design_option",
+    "viewpoint": "alternative",
+    "date": "2026-11-19",
+    "hard_requirement": false,
+    "text": "An agentic triage assistant could call read-only tools to inspect synthetic incident context and recommend a team. Tool permissions, latency, and human oversight need explicit limits."
+  },
+  {
+    "id": "SYN-007",
+    "title": "New solutions and missing evidence",
+    "source_type": "synthetic_evaluation_note",
+    "viewpoint": "uncertainty",
+    "date": "2026-11-19",
+    "hard_requirement": false,
+    "text": "A newer incident automation approach may have fewer public studies. Missing evidence is not the same as negative evidence; compare required pilot tests and document uncertainty."
+  },
+  {
+    "id": "SYN-008",
+    "title": "Data protection and tool restrictions",
+    "source_type": "synthetic_policy",
+    "viewpoint": "mandatory_constraint",
+    "date": "2026-11-19",
+    "hard_requirement": true,
+    "text": "The hypothetical organization requires synthetic or approved public test data. Research tools must be read-only and must not expose credentials, private incident records, or customer details."
+  }
+]
