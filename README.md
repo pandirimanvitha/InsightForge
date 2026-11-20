@@ -24,3 +24,24 @@ during subsequent development phases.
 
 pip install -r requirements.txt
 python -m pytest tests -q
+
+
+## Development Progress
+
+### Phase 0 - Project Setup
+- Initialized project from CMU Research Agent Starter.
+- Configured Google Colab and GitHub.
+- Verified the original two tests.
+
+### Phase 1A - Synthetic Evidence Retrieval
+- Created eight synthetic incident-triage research records.
+- Implemented keyword-based research retrieval.
+- Integrated the new research tool with the CMU ResearchAgent.
+- Added four automated tests.
+- Verified six tests passing.
+
+### Current Limitations
+This version uses keyword-based retrieval rather than
+semantic RAG. LLM-controlled ReAct reasoning, Tree-of-Thought,
+multi-agent coordination, and advanced safety checks are
+planned for subsequent development phases.
