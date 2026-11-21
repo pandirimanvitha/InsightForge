@@ -10,7 +10,8 @@ gathers evidence, evaluates alternative solutions, and
 produces recommendations for human review.
 
 ## Current Status
-Phase 0: Initial project setup and course starter baseline.
+Phase 2 — Semantic Retrieval and Grounded RAG
+
 
 ## Technology
 Python, Google Colab, GitHub.
