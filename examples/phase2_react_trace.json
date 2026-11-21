@@ -1,0 +1,73 @@
+{
+  "question": "Should a hypothetical fintech company adopt AI-powered incident classification and routing? Research benefits, alternatives, risks, and human approval requirements.",
+  "original_stop_reason": "step_limit",
+  "original_react_steps": [
+    {
+      "step": 1,
+      "action": "search",
+      "query": "AI-powered incident classification and routing fintech benefits risks alternatives human approval requirements",
+      "sources": [
+        "synthetic://SYN-001",
+        "synthetic://SYN-003",
+        "synthetic://SYN-004"
+      ]
+    },
+    {
+      "step": 2,
+      "action": "search",
+      "query": "AI incident classification routing fintech benefits risks human approval regulatory",
+      "sources": [
+        "synthetic://SYN-001",
+        "synthetic://SYN-003",
+        "synthetic://SYN-004"
+      ]
+    },
+    {
+      "step": 3,
+      "action": "search",
+      "query": "fintech AI incident triage adoption benefits governance human approval LLM routing",
+      "sources": [
+        "synthetic://SYN-001",
+        "synthetic://SYN-004",
+        "synthetic://SYN-006"
+      ]
+    },
+    {
+      "step": 4,
+      "action": "search",
+      "query": "fintech incident management AI regulatory compliance human approval requirements",
+      "sources": [
+        "synthetic://SYN-001",
+        "synthetic://SYN-004",
+        "synthetic://SYN-006"
+      ]
+    }
+  ],
+  "targeted_gap_recovery": [
+    {
+      "action": "human_directed_semantic_search",
+      "reason": "Missing required comparison evidence",
+      "query": "Option B RAG assisted incident classification runbooks resolved tickets",
+      "source_id": "SYN-005",
+      "retrieval_rank": 1
+    },
+    {
+      "action": "human_directed_semantic_search",
+      "reason": "Missing required comparison evidence",
+      "query": "data protection synthetic public data read-only credentials",
+      "source_id": "SYN-008",
+      "retrieval_rank": 1
+    }
+  ],
+  "report_model": "baidu/ernie-5.5-flash-preview:free",
+  "report_finish_reason": "stop",
+  "final_source_ids": [
+    "SYN-001",
+    "SYN-003",
+    "SYN-004",
+    "SYN-005",
+    "SYN-006",
+    "SYN-008"
+  ],
+  "report_review": "Human-reviewed correction removed an unsupported speculative efficiency phrase."
+}
