@@ -77,3 +77,50 @@ recommendations.
 Tree-of-Thought, four-agent coordination, and
 additional evaluation guardrails will be implemented
 in later phases.
+
+
+### Phase 2 — Semantic Retrieval and Grounded RAG
+
+InsightForge now supports embedding-based semantic retrieval
+and evidence-grounded research brief generation.
+
+#### Implemented Features
+
+- Semantic retrieval using all-MiniLM-L6-v2 embeddings
+- Cosine similarity search across synthetic research evidence
+- Top-3 source retrieval with original source identifiers
+- Integration with the existing ReAct research agent
+- OpenRouter-based grounded brief generation
+- Four-section research brief:
+  Findings, Alternatives, Risks, and Missing Evidence
+- Basic source citation validation
+- Explicit handling of incomplete model responses
+- Automated tests using simulated model responses
+
+#### Demonstration
+
+The research scenario compares three incident-triage approaches:
+1. Rule-based classification
+2. RAG-assisted classification
+3. Agentic investigation with human oversight
+
+The demonstration uses fictional evidence only.
+
+The original ReAct run reached its step limit before retrieving
+all required evidence. Additional human-directed semantic searches
+were performed and recorded to complete evidence coverage.
+
+The repository includes the original model output,
+a human-reviewed example, and the execution trace.
+
+#### Current Limitations
+
+- Synthetic evidence rather than production data
+- Small in-memory document collection
+- Source citation validation does not guarantee claim accuracy
+- Research completeness is not yet fully autonomous
+- Free LLM providers may impose rate limits
+
+Future phases will add Tree-of-Thought evaluation,
+multi-agent coordination, stronger safety controls,
+and quantitative evaluation.
