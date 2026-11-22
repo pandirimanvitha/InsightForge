@@ -1,0 +1,162 @@
+{
+  "question": "Should a hypothetical fintech company adopt AI-powered incident classification and routing? Research benefits, alternatives, risks, and human approval requirements.",
+  "original_stop_reason": "step_limit",
+  "original_source_ids": [
+    "SYN-001",
+    "SYN-003",
+    "SYN-004",
+    "SYN-006"
+  ],
+  "controller_recovered_sources": [
+    {
+      "action": "controller_targeted_semantic_search",
+      "query": "Option B: RAG-assisted classification",
+      "source_id": "SYN-005",
+      "reason": "Mandatory policy, risk, or option coverage gap"
+    },
+    {
+      "action": "controller_targeted_semantic_search",
+      "query": "Data protection and tool restrictions",
+      "source_id": "SYN-008",
+      "reason": "Mandatory policy, risk, or option coverage gap"
+    }
+  ],
+  "final_source_ids": [
+    "SYN-001",
+    "SYN-003",
+    "SYN-004",
+    "SYN-005",
+    "SYN-006",
+    "SYN-008"
+  ],
+  "method": "3-branch, beam-2, depth-2 constrained refinement",
+  "mode": "offline_deterministic",
+  "model_calls": 0,
+  "scoring_weights": {
+    "evidence_quality": 0.3,
+    "requirements_fit": 0.25,
+    "feasibility": 0.2,
+    "safety_operations": 0.15,
+    "cost_complexity": 0.1
+  },
+  "score_type": "provisional_synthetic_judgments",
+  "baseline": {
+    "option_id": "A",
+    "name": "Rule-based triage",
+    "score": 3.4,
+    "eligible": true,
+    "blockers": [],
+    "evidence_ids": [
+      "SYN-001",
+      "SYN-008",
+      "SYN-004"
+    ],
+    "safeguards": "Maintain auditable classification rules"
+  },
+  "beam": [
+    {
+      "option_id": "A",
+      "name": "Rule-based triage",
+      "score": 3.4,
+      "eligible": true,
+      "blockers": [],
+      "evidence_ids": [
+        "SYN-001",
+        "SYN-008",
+        "SYN-004"
+      ],
+      "safeguards": "Maintain auditable classification rules"
+    },
+    {
+      "option_id": "B",
+      "name": "RAG-assisted triage",
+      "score": 2.95,
+      "eligible": true,
+      "blockers": [],
+      "evidence_ids": [
+        "SYN-001",
+        "SYN-008",
+        "SYN-005"
+      ],
+      "safeguards": "Retrieve runbooks and resolved ticket examples"
+    }
+  ],
+  "refinements": [
+    {
+      "option_id": "A",
+      "name": "Rule-based triage",
+      "score": 3.487,
+      "eligible": true,
+      "blockers": [],
+      "evidence_ids": [
+        "SYN-001",
+        "SYN-008",
+        "SYN-004",
+        "SYN-003"
+      ],
+      "safeguards": "Maintain auditable classification rules; proposed pilot safeguards: retain a manual fallback; schedule rule and ownership reviews"
+    },
+    {
+      "option_id": "B",
+      "name": "RAG-assisted triage",
+      "score": 3.025,
+      "eligible": true,
+      "blockers": [],
+      "evidence_ids": [
+        "SYN-001",
+        "SYN-008",
+        "SYN-005",
+        "SYN-003"
+      ],
+      "safeguards": "Retrieve runbooks and resolved ticket examples; proposed pilot safeguards: verify retrieved runbook freshness; flag low-confidence suggestions"
+    }
+  ],
+  "proposals": [
+    {
+      "option_id": "A",
+      "status": "accepted",
+      "mitigations": [
+        "manual_fallback",
+        "rule_maintenance_review"
+      ],
+      "evidence_ids": [
+        "SYN-004",
+        "SYN-003"
+      ],
+      "rationale": "Illustrative safeguards supported by the named synthetic risk and option records.",
+      "score": 3.487,
+      "blockers": []
+    },
+    {
+      "option_id": "B",
+      "status": "accepted",
+      "mitigations": [
+        "retrieval_freshness_check",
+        "uncertainty_flags"
+      ],
+      "evidence_ids": [
+        "SYN-005",
+        "SYN-003"
+      ],
+      "rationale": "Illustrative safeguards supported by the named synthetic risk and option records.",
+      "score": 3.025,
+      "blockers": []
+    }
+  ],
+  "provisional_best": {
+    "option_id": "A",
+    "name": "Rule-based triage",
+    "score": 3.487,
+    "eligible": true,
+    "blockers": [],
+    "evidence_ids": [
+      "SYN-001",
+      "SYN-008",
+      "SYN-004",
+      "SYN-003"
+    ],
+    "safeguards": "Maintain auditable classification rules; proposed pilot safeguards: retain a manual fallback; schedule rule and ownership reviews"
+  },
+  "human_review_required": true,
+  "limitations": "Ratings and mitigation score increments are illustrative scenario judgments, not observed business performance. All input sources are synthetic, not independent external studies. A human must approve any pilot decision."
+}

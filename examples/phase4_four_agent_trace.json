@@ -1,0 +1,50 @@
+{
+  "execution_mode": "recorded_react_evidence_with_new_offline_evaluation",
+  "roles": [
+    "planner",
+    "researcher",
+    "critic_evaluator",
+    "report_writer"
+  ],
+  "status": "ready_for_human_review",
+  "original_source_ids": [
+    "SYN-001",
+    "SYN-003",
+    "SYN-004",
+    "SYN-006"
+  ],
+  "requested_followups": [
+    "SYN-005",
+    "SYN-008"
+  ],
+  "final_source_ids": [
+    "SYN-001",
+    "SYN-003",
+    "SYN-004",
+    "SYN-005",
+    "SYN-006",
+    "SYN-008"
+  ],
+  "remaining_gaps": [],
+  "search_actions": [
+    {
+      "action": "search",
+      "query": "Option B: RAG-assisted classification",
+      "requested_id": "SYN-005",
+      "status": "verified_retrieved"
+    },
+    {
+      "action": "search",
+      "query": "Data protection and tool restrictions",
+      "requested_id": "SYN-008",
+      "status": "verified_retrieved"
+    }
+  ],
+  "proposal_mode": "offline_deterministic",
+  "model_calls": 0,
+  "provisional_best": {
+    "option": "A",
+    "score": 3.487
+  },
+  "human_review_required": true
+}

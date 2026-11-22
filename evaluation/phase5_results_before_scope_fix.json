@@ -1,0 +1,112 @@
+[
+  {
+    "scenario": "Original ReAct evidence",
+    "expected": "ready_for_human_review",
+    "observed": "ready_for_human_review",
+    "passed": true,
+    "elapsed_ms": 34.35,
+    "starting_source_count": 4,
+    "final_source_count": 6,
+    "followup_searches": 2,
+    "model_calls": 0
+  },
+  {
+    "scenario": "Complete evidence",
+    "expected": "ready_for_human_review",
+    "observed": "ready_for_human_review",
+    "passed": true,
+    "elapsed_ms": 2.15,
+    "starting_source_count": 6,
+    "final_source_count": 6,
+    "followup_searches": 0,
+    "model_calls": 0
+  },
+  {
+    "scenario": "Missing approval policy",
+    "expected": "ready_for_human_review",
+    "observed": "ready_for_human_review",
+    "passed": true,
+    "elapsed_ms": 18.69,
+    "starting_source_count": 5,
+    "final_source_count": 6,
+    "followup_searches": 1,
+    "model_calls": 0
+  },
+  {
+    "scenario": "Missing RAG alternative",
+    "expected": "ready_for_human_review",
+    "observed": "ready_for_human_review",
+    "passed": true,
+    "elapsed_ms": 18.65,
+    "starting_source_count": 5,
+    "final_source_count": 6,
+    "followup_searches": 1,
+    "model_calls": 0
+  },
+  {
+    "scenario": "Missing risk evidence",
+    "expected": "ready_for_human_review",
+    "observed": "ready_for_human_review",
+    "passed": true,
+    "elapsed_ms": 18.08,
+    "starting_source_count": 5,
+    "final_source_count": 6,
+    "followup_searches": 1,
+    "model_calls": 0
+  },
+  {
+    "scenario": "No initial evidence",
+    "expected": "abstained_missing_evidence",
+    "observed": "abstained_missing_evidence",
+    "passed": true,
+    "elapsed_ms": 48.0,
+    "starting_source_count": 0,
+    "final_source_count": 3,
+    "followup_searches": 3,
+    "model_calls": 0
+  },
+  {
+    "scenario": "Four missing records",
+    "expected": "abstained_missing_evidence",
+    "observed": "abstained_missing_evidence",
+    "passed": true,
+    "elapsed_ms": 48.0,
+    "starting_source_count": 2,
+    "final_source_count": 5,
+    "followup_searches": 3,
+    "model_calls": 0
+  },
+  {
+    "scenario": "Retrieval unavailable",
+    "expected": "abstained_missing_evidence",
+    "observed": "abstained_missing_evidence",
+    "passed": true,
+    "elapsed_ms": 1.92,
+    "starting_source_count": 4,
+    "final_source_count": 4,
+    "followup_searches": 2,
+    "model_calls": 0
+  },
+  {
+    "scenario": "Tampered evidence",
+    "expected": "rejected_invalid_source",
+    "observed": "rejected_invalid_source",
+    "passed": true,
+    "elapsed_ms": 1.36,
+    "starting_source_count": 6,
+    "final_source_count": null,
+    "followup_searches": null,
+    "model_calls": null
+  },
+  {
+    "scenario": "Unrelated question",
+    "expected": "abstained_out_of_scope",
+    "observed": "ready_for_human_review",
+    "passed": false,
+    "elapsed_ms": 1.81,
+    "starting_source_count": 6,
+    "final_source_count": 6,
+    "followup_searches": 0,
+    "model_calls": 0
+  }
+]

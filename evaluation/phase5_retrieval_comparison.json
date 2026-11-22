@@ -1,0 +1,238 @@
+[
+  {
+    "method": "keyword",
+    "question": "Who approves urgent P0 incident routing suggestions?",
+    "expected_id": "SYN-001",
+    "retrieved_ids": [
+      "SYN-003",
+      "SYN-001",
+      "SYN-002"
+    ],
+    "rank": 2,
+    "top1_hit": false,
+    "top3_hit": true,
+    "reciprocal_rank": 0.5,
+    "search_ms": 3.204
+  },
+  {
+    "method": "semantic",
+    "question": "Who approves urgent P0 incident routing suggestions?",
+    "expected_id": "SYN-001",
+    "retrieved_ids": [
+      "SYN-001",
+      "SYN-003",
+      "SYN-002"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 102.776
+  },
+  {
+    "method": "keyword",
+    "question": "Has reducing manual ticket sorting work been measured?",
+    "expected_id": "SYN-002",
+    "retrieved_ids": [
+      "SYN-002",
+      "SYN-003",
+      "SYN-005"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 0.291
+  },
+  {
+    "method": "semantic",
+    "question": "Has reducing manual ticket sorting work been measured?",
+    "expected_id": "SYN-002",
+    "retrieved_ids": [
+      "SYN-002",
+      "SYN-005",
+      "SYN-004"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 80.53
+  },
+  {
+    "method": "keyword",
+    "question": "How can incorrect team assignment delay response?",
+    "expected_id": "SYN-003",
+    "retrieved_ids": [
+      "SYN-003",
+      "SYN-001",
+      "SYN-004"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 0.301
+  },
+  {
+    "method": "semantic",
+    "question": "How can incorrect team assignment delay response?",
+    "expected_id": "SYN-003",
+    "retrieved_ids": [
+      "SYN-002",
+      "SYN-003",
+      "SYN-001"
+    ],
+    "rank": 2,
+    "top1_hit": false,
+    "top3_hit": true,
+    "reciprocal_rank": 0.5,
+    "search_ms": 72.464
+  },
+  {
+    "method": "keyword",
+    "question": "Are explicit routing patterns easy to audit?",
+    "expected_id": "SYN-004",
+    "retrieved_ids": [
+      "SYN-004",
+      "SYN-001",
+      "SYN-002"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 2.336
+  },
+  {
+    "method": "semantic",
+    "question": "Are explicit routing patterns easy to audit?",
+    "expected_id": "SYN-004",
+    "retrieved_ids": [
+      "SYN-004",
+      "SYN-001",
+      "SYN-002"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 71.387
+  },
+  {
+    "method": "keyword",
+    "question": "Can retrieved runbooks ground an LLM classification?",
+    "expected_id": "SYN-005",
+    "retrieved_ids": [
+      "SYN-005",
+      "SYN-003",
+      "SYN-004"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 0.292
+  },
+  {
+    "method": "semantic",
+    "question": "Can retrieved runbooks ground an LLM classification?",
+    "expected_id": "SYN-005",
+    "retrieved_ids": [
+      "SYN-005",
+      "SYN-003",
+      "SYN-004"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 77.864
+  },
+  {
+    "method": "keyword",
+    "question": "Can an agent inspect incidents using read-only tools?",
+    "expected_id": "SYN-006",
+    "retrieved_ids": [
+      "SYN-006",
+      "SYN-008",
+      "SYN-001"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 0.31
+  },
+  {
+    "method": "semantic",
+    "question": "Can an agent inspect incidents using read-only tools?",
+    "expected_id": "SYN-006",
+    "retrieved_ids": [
+      "SYN-006",
+      "SYN-008",
+      "SYN-004"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 87.276
+  },
+  {
+    "method": "keyword",
+    "question": "Does a lack of studies prove a technology ineffective?",
+    "expected_id": "SYN-007",
+    "retrieved_ids": [
+      "SYN-007"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 0.269
+  },
+  {
+    "method": "semantic",
+    "question": "Does a lack of studies prove a technology ineffective?",
+    "expected_id": "SYN-007",
+    "retrieved_ids": [
+      "SYN-007",
+      "SYN-008",
+      "SYN-002"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 44.218
+  },
+  {
+    "method": "keyword",
+    "question": "What restrictions protect private data and credentials?",
+    "expected_id": "SYN-008",
+    "retrieved_ids": [
+      "SYN-008"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 2.34
+  },
+  {
+    "method": "semantic",
+    "question": "What restrictions protect private data and credentials?",
+    "expected_id": "SYN-008",
+    "retrieved_ids": [
+      "SYN-008",
+      "SYN-006",
+      "SYN-001"
+    ],
+    "rank": 1,
+    "top1_hit": true,
+    "top3_hit": true,
+    "reciprocal_rank": 1.0,
+    "search_ms": 48.342
+  }
+]

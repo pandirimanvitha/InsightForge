@@ -1,0 +1,15 @@
+{
+  "scenario_count": 10,
+  "before_passed": 9,
+  "after_passed": 10,
+  "after_failed": 0,
+  "scope_test_passed": true,
+  "scope_test_observed": "abstained_out_of_scope",
+  "comparable_case_count": 8,
+  "baseline_mean_coverage": 0.6458,
+  "full_mean_coverage": 0.875,
+  "coverage_difference": 0.2292,
+  "total_followup_searches": 13,
+  "median_runtime_ms": 18.535,
+  "failed_scenarios": []
+}

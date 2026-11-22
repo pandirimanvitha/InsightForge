@@ -1,0 +1,301 @@
+{
+  "question": "Should a hypothetical fintech company adopt AI-powered incident classification and routing? Research benefits, alternatives, risks, and human approval requirements.",
+  "source_ids": [
+    "SYN-001",
+    "SYN-003",
+    "SYN-004",
+    "SYN-005",
+    "SYN-006",
+    "SYN-008"
+  ],
+  "scoring_weights": {
+    "evidence_quality": 0.3,
+    "requirements_fit": 0.25,
+    "feasibility": 0.2,
+    "safety_operations": 0.15,
+    "cost_complexity": 0.1
+  },
+  "score_type": "illustrative_synthetic_judgment",
+  "baseline": {
+    "candidate": {
+      "option_id": "A",
+      "name": "Rule-based triage",
+      "depth": 1,
+      "plan": "Maintain auditable classification rules",
+      "evidence_ids": [
+        "SYN-001",
+        "SYN-008",
+        "SYN-004"
+      ],
+      "ratings": {
+        "evidence_quality": 2.0,
+        "requirements_fit": 4.0,
+        "feasibility": 4.0,
+        "safety_operations": 4.0,
+        "cost_complexity": 4.0
+      },
+      "human_approval": true,
+      "read_only": true,
+      "approved_data": true,
+      "parent": null,
+      "assumptions": [
+        "Ratings are provisional scenario judgments, not measured results."
+      ]
+    },
+    "score": 3.4,
+    "eligible": true,
+    "blockers": []
+  },
+  "initial_branches": [
+    {
+      "candidate": {
+        "option_id": "A",
+        "name": "Rule-based triage",
+        "depth": 1,
+        "plan": "Maintain auditable classification rules",
+        "evidence_ids": [
+          "SYN-001",
+          "SYN-008",
+          "SYN-004"
+        ],
+        "ratings": {
+          "evidence_quality": 2.0,
+          "requirements_fit": 4.0,
+          "feasibility": 4.0,
+          "safety_operations": 4.0,
+          "cost_complexity": 4.0
+        },
+        "human_approval": true,
+        "read_only": true,
+        "approved_data": true,
+        "parent": null,
+        "assumptions": [
+          "Ratings are provisional scenario judgments, not measured results."
+        ]
+      },
+      "score": 3.4,
+      "eligible": true,
+      "blockers": []
+    },
+    {
+      "candidate": {
+        "option_id": "B",
+        "name": "RAG-assisted triage",
+        "depth": 1,
+        "plan": "Retrieve runbooks and resolved ticket examples",
+        "evidence_ids": [
+          "SYN-001",
+          "SYN-008",
+          "SYN-005"
+        ],
+        "ratings": {
+          "evidence_quality": 2.0,
+          "requirements_fit": 4.0,
+          "feasibility": 3.0,
+          "safety_operations": 3.0,
+          "cost_complexity": 3.0
+        },
+        "human_approval": true,
+        "read_only": true,
+        "approved_data": true,
+        "parent": null,
+        "assumptions": [
+          "Ratings are provisional scenario judgments, not measured results."
+        ]
+      },
+      "score": 2.95,
+      "eligible": true,
+      "blockers": []
+    },
+    {
+      "candidate": {
+        "option_id": "C",
+        "name": "Agentic investigation",
+        "depth": 1,
+        "plan": "Use read-only investigation tools to suggest routing",
+        "evidence_ids": [
+          "SYN-001",
+          "SYN-008",
+          "SYN-006"
+        ],
+        "ratings": {
+          "evidence_quality": 2.0,
+          "requirements_fit": 4.0,
+          "feasibility": 2.0,
+          "safety_operations": 2.0,
+          "cost_complexity": 2.0
+        },
+        "human_approval": true,
+        "read_only": true,
+        "approved_data": true,
+        "parent": null,
+        "assumptions": [
+          "Ratings are provisional scenario judgments, not measured results."
+        ]
+      },
+      "score": 2.5,
+      "eligible": true,
+      "blockers": []
+    }
+  ],
+  "selected_beam": [
+    {
+      "candidate": {
+        "option_id": "A",
+        "name": "Rule-based triage",
+        "depth": 1,
+        "plan": "Maintain auditable classification rules",
+        "evidence_ids": [
+          "SYN-001",
+          "SYN-008",
+          "SYN-004"
+        ],
+        "ratings": {
+          "evidence_quality": 2.0,
+          "requirements_fit": 4.0,
+          "feasibility": 4.0,
+          "safety_operations": 4.0,
+          "cost_complexity": 4.0
+        },
+        "human_approval": true,
+        "read_only": true,
+        "approved_data": true,
+        "parent": null,
+        "assumptions": [
+          "Ratings are provisional scenario judgments, not measured results."
+        ]
+      },
+      "score": 3.4,
+      "eligible": true,
+      "blockers": []
+    },
+    {
+      "candidate": {
+        "option_id": "B",
+        "name": "RAG-assisted triage",
+        "depth": 1,
+        "plan": "Retrieve runbooks and resolved ticket examples",
+        "evidence_ids": [
+          "SYN-001",
+          "SYN-008",
+          "SYN-005"
+        ],
+        "ratings": {
+          "evidence_quality": 2.0,
+          "requirements_fit": 4.0,
+          "feasibility": 3.0,
+          "safety_operations": 3.0,
+          "cost_complexity": 3.0
+        },
+        "human_approval": true,
+        "read_only": true,
+        "approved_data": true,
+        "parent": null,
+        "assumptions": [
+          "Ratings are provisional scenario judgments, not measured results."
+        ]
+      },
+      "score": 2.95,
+      "eligible": true,
+      "blockers": []
+    }
+  ],
+  "refinements": [
+    {
+      "candidate": {
+        "option_id": "A",
+        "name": "Rule-based triage",
+        "depth": 2,
+        "plan": "Maintain auditable classification rules; add a correction path, fallback, and audit log",
+        "evidence_ids": [
+          "SYN-001",
+          "SYN-008",
+          "SYN-004"
+        ],
+        "ratings": {
+          "evidence_quality": 2.0,
+          "requirements_fit": 4.0,
+          "feasibility": 4.0,
+          "safety_operations": 4.5,
+          "cost_complexity": 4.0
+        },
+        "human_approval": true,
+        "read_only": true,
+        "approved_data": true,
+        "parent": "A",
+        "assumptions": [
+          "Ratings are provisional scenario judgments, not measured results.",
+          "Refinement benefits are hypotheses requiring pilot validation."
+        ]
+      },
+      "score": 3.475,
+      "eligible": true,
+      "blockers": []
+    },
+    {
+      "candidate": {
+        "option_id": "B",
+        "name": "RAG-assisted triage",
+        "depth": 2,
+        "plan": "Retrieve runbooks and resolved ticket examples; validate retrieval freshness and add a low-confidence fallback",
+        "evidence_ids": [
+          "SYN-001",
+          "SYN-008",
+          "SYN-005"
+        ],
+        "ratings": {
+          "evidence_quality": 2.0,
+          "requirements_fit": 4.0,
+          "feasibility": 3.5,
+          "safety_operations": 4.0,
+          "cost_complexity": 3.0
+        },
+        "human_approval": true,
+        "read_only": true,
+        "approved_data": true,
+        "parent": "B",
+        "assumptions": [
+          "Ratings are provisional scenario judgments, not measured results.",
+          "Refinement benefits are hypotheses requiring pilot validation."
+        ]
+      },
+      "score": 3.2,
+      "eligible": true,
+      "blockers": []
+    }
+  ],
+  "provisional_best": {
+    "candidate": {
+      "option_id": "A",
+      "name": "Rule-based triage",
+      "depth": 2,
+      "plan": "Maintain auditable classification rules; add a correction path, fallback, and audit log",
+      "evidence_ids": [
+        "SYN-001",
+        "SYN-008",
+        "SYN-004"
+      ],
+      "ratings": {
+        "evidence_quality": 2.0,
+        "requirements_fit": 4.0,
+        "feasibility": 4.0,
+        "safety_operations": 4.5,
+        "cost_complexity": 4.0
+      },
+      "human_approval": true,
+      "read_only": true,
+      "approved_data": true,
+      "parent": "A",
+      "assumptions": [
+        "Ratings are provisional scenario judgments, not measured results.",
+        "Refinement benefits are hypotheses requiring pilot validation."
+      ]
+    },
+    "score": 3.475,
+    "eligible": true,
+    "blockers": []
+  },
+  "stop_reason": "depth_limit",
+  "human_review_required": true,
+  "limitations": "All scores are synthetic scenario judgments, not measured performance. The highest-rated option is a pilot hypothesis, not deployment approval."
+}
