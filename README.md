@@ -1,127 +1,158 @@
 # InsightForge
+### AI Research Assistant for Product and Technology Decisions
 
-AI Research Assistant for Product and Technology Decisions
+**Carnegie Mellon University — Agentic AI Capstone Project**
 
-## Overview
-InsightForge is my CMU Agentic AI capstone project.
+## 1. Project Overview
 
-The goal is to build an autonomous research workflow that
-gathers evidence, evaluates alternative solutions, and
-produces recommendations for human review.
+InsightForge is an AI-assisted research prototype designed to gather evidence, compare technology alternatives, identify risks, and produce grounded recommendations for human review.
 
-## Current Status
-Phase 2 — Semantic Retrieval and Grounded RAG
+The capstone investigates the research question:
 
+**Should a hypothetical fintech organization adopt AI-assisted incident classification and routing?**
 
-## Technology
-Python, Google Colab, GitHub.
+Three approaches are evaluated:
 
-## Starting Point
-Adapted from the CMU Research Agent Starter Template.
-Additional agent capabilities will be implemented and tested
-during subsequent development phases.
+- **Option A:** Rule-based incident classification
+- **Option B:** Retrieval-Augmented Generation (RAG)-assisted classification
+- **Option C:** Agentic incident investigation with human oversight
 
-## Running Baseline Tests
+The project uses eight synthetic research records. No real company incidents, customer records, or production systems are involved.
 
-pip install -r requirements.txt
-python -m pytest tests -q
+## 2. System Architecture
 
+InsightForge combines several agentic AI concepts:
 
-## Development Progress
+**ReAct Research**
 
-### Phase 0 - Project Setup
-- Initialized project from CMU Research Agent Starter.
-- Configured Google Colab and GitHub.
-- Verified the original two tests.
+A bounded research loop allows an LLM to select read-only search or finish actions. Actions are validated and logged. The recorded example reached its step limit, after which additional evidence recovery was performed.
 
-### Phase 1A - Synthetic Evidence Retrieval
-- Created eight synthetic incident-triage research records.
-- Implemented keyword-based research retrieval.
-- Integrated the new research tool with the CMU ResearchAgent.
-- Added four automated tests.
-- Verified six tests passing.
+**Retrieval-Augmented Generation**
 
-### Current Limitations
-This version uses keyword-based retrieval rather than
-semantic RAG. LLM-controlled ReAct reasoning, Tree-of-Thought,
-multi-agent coordination, and advanced safety checks are
-planned for subsequent development phases.
+Semantic retrieval uses `sentence-transformers/all-MiniLM-L6-v2` embeddings and cosine similarity to locate relevant synthetic evidence. A keyword-based retrieval implementation provides a comparison baseline.
 
+**Tree-of-Thought Evaluation**
 
-### Phase 1B — LLM-Driven ReAct Research
+Three predefined alternatives are evaluated using weighted criteria. A beam-search-style process retains two promising options for further refinement.
 
-InsightForge now includes an OpenRouter-powered
-ReAct-style research workflow.
+Mitigation proposals are independently validated against source evidence and mandatory safety policies. Numerical scores are illustrative, not measured business performance.
 
-Implemented capabilities:
-- LLM-selected research actions (search or finish)
-- Read-only synthetic evidence search
-- Structured action validation
-- Short-term observation history
-- Maximum four-step research loop
-- Duplicate query prevention
-- Action and observation execution trace
-- Source-backed extractive research reports
-- Automated tests using simulated model decisions
+**Four-Agent Workflow**
 
-The agent uses the existing CMU ResearchAgent
-data structures and reuses the synthetic
-research tool developed in Phase 1A.
+1. **Planner Agent:** Defines research tasks and required evidence.
+2. **Researcher Agent:** Retrieves and verifies source documents.
+3. **Critic / Evaluator Agent:** Identifies evidence gaps, evaluates alternatives, and enforces constraints.
+4. **Report Writer Agent:** Produces a grounded research brief for human review.
 
-#### Current Limitations
+The Critic can request up to three additional read-only evidence searches.
 
-Retrieval is currently keyword-based rather than
-semantic RAG. The final research brief uses extractive
-summarization rather than LLM-generated comparative
-recommendations.
+The integrated offline workflow uses deterministic agent roles. Separate components support optional LLM-driven ReAct actions, grounded writing, and mitigation proposals.
 
-Tree-of-Thought, four-agent coordination, and
-additional evaluation guardrails will be implemented
-in later phases.
+## 3. Safety and Reliability
 
+The prototype includes:
 
-### Phase 2 — Semantic Retrieval and Grounded RAG
+- Human approval requirements for high-severity incident recommendations
+- Read-only research operations
+- Synthetic or otherwise approved data restrictions
+- Source integrity and citation checks
+- Bounded research steps and follow-up searches
+- Rejection of altered evidence
+- Abstention when mandatory evidence is unavailable
+- Conservative rejection of out-of-scope questions
+- Explicit uncertainty and human-review requirements
 
-InsightForge now supports embedding-based semantic retrieval
-and evidence-grounded research brief generation.
+**InsightForge does not change incident routing or execute production actions.**
 
-#### Implemented Features
+## 4. Evaluation Results
 
-- Semantic retrieval using all-MiniLM-L6-v2 embeddings
-- Cosine similarity search across synthetic research evidence
-- Top-3 source retrieval with original source identifiers
-- Integration with the existing ReAct research agent
-- OpenRouter-based grounded brief generation
-- Four-section research brief:
-  Findings, Alternatives, Risks, and Missing Evidence
-- Basic source citation validation
-- Explicit handling of incomplete model responses
-- Automated tests using simulated model responses
+The system was evaluated using ten controlled synthetic scenarios and eight retrieval benchmark questions.
 
-#### Demonstration
+| Metric | Observed result |
+|---|---|
+| Scenarios passing before scope validation | 9/10 |
+| Scenarios passing after scope validation | 10/10 |
+| Automated regression tests | 41 passed |
+| Initial required-evidence coverage | 64.6% |
+| Full-workflow required-evidence coverage | 87.5% |
+| Evidence coverage improvement | +22.9 percentage points |
+| Additional searches across evaluation | 13 |
+| Median offline scenario runtime | 18.535 ms |
 
-The research scenario compares three incident-triage approaches:
-1. Rule-based classification
-2. RAG-assisted classification
-3. Agentic investigation with human oversight
+### Keyword vs. Semantic Retrieval
 
-The demonstration uses fictional evidence only.
+| Metric | Keyword Search | Semantic Retrieval |
+|---|---|---|
+| Top-1 accuracy | 87.5% | 87.5% |
+| Top-3 recall | 100% | 100% |
+| Mean reciprocal rank | 0.938 | 0.938 |
 
-The original ReAct run reached its step limit before retrieving
-all required evidence. Additional human-directed semantic searches
-were performed and recorded to complete evidence coverage.
+Both retrieval approaches achieved identical aggregate scores on the eight-question benchmark, although their ranking errors differed.
 
-The repository includes the original model output,
-a human-reviewed example, and the execution trace.
+These measurements demonstrate prototype behavior on a small synthetic dataset. They do not establish production-level classification accuracy, real-world financial benefits, or superior performance of semantic retrieval.
 
-#### Current Limitations
+The median runtime reflects the offline evaluation, not end-to-end latency for a live LLM workflow.
 
-- Synthetic evidence rather than production data
-- Small in-memory document collection
-- Source citation validation does not guarantee claim accuracy
-- Research completeness is not yet fully autonomous
-- Free LLM providers may impose rate limits
+## 5. Technology Stack
 
-Future phases will add Tree-of-Thought evaluation,
-multi-agent coordination, stronger safety controls,
-and quantitative evaluation.
+- Python
+- Google Colab
+- GitHub
+- NumPy
+- Sentence Transformers
+- OpenRouter for optional LLM interactions
+- Pytest for automated testing
+
+## 6. Repository Structure
+
+- `research_agent/` — Research clients, ReAct agent, semantic retrieval, ToT evaluation, four-agent workflow, and safety checks
+- `data/synthetic/` — Synthetic research evidence
+- `tests/` — Automated regression tests
+- `evaluation/` — Scenario evaluation and retrieval benchmark results
+- `examples/` — Research briefs, decision summaries, and execution traces
+- `notebooks/` — Google Colab development notebook
+- `requirements.txt` — Python dependencies
+
+## 7. Running the Project
+
+Clone or download the repository and install its dependencies:
+
+`pip install -r requirements.txt`
+
+Run the offline automated tests:
+
+`python -m pytest tests -q`
+
+For the interactive research demonstrations, open `notebooks/InsightForge_Capstone.ipynb` in Google Colab.
+
+The notebook contains the development workflow, saved research replay, four-agent demonstration, safety tests, and evaluation steps. Some notebook cells use a Google Drive project path and must be adjusted for another environment.
+
+Offline tests do not require an OpenRouter API key. Optional live model calls require a separately configured API key and may be affected by provider availability and rate limits.
+
+## 8. Key Findings
+
+The prototype demonstrated that:
+
+- A Critic-guided recovery step can improve required-evidence coverage.
+- Independent policy validation can prevent unsupported recommendations.
+- Out-of-scope questions can be rejected before research begins.
+- Four coordinated roles can produce a traceable research-to-decision workflow.
+- More complex retrieval methods do not necessarily outperform simpler baselines on a small dataset.
+
+The illustrative ToT comparison provisionally ranked rule-based triage highest, with a refined score of 3.487/5. This is a hypothetical rubric result and not a measured superiority claim.
+
+## 9. Limitations and Future Work
+
+The research collection contains only eight synthetic documents. The system has not been tested with real incident streams, measured business outcomes, or independently verified industry research.
+
+The Planner and scope guard are specific to incident-triage research. The integrated offline workflow is deterministic rather than a fully autonomous multi-agent system.
+
+Future improvements include larger authorized datasets, independent claim verification, broader scope validation, human usability testing, measured LLM latency, and controlled pilot studies.
+
+## 10. Acknowledgments and Development Transparency
+
+This project was adapted from the **CMU Research Agent Starter Template** and extended through iterative experimentation with retrieval, reasoning, agent coordination, and evaluation techniques.
+
+Generative AI assistance, including ChatGPT, was used in drafting and debugging substantial portions of the implementation and documentation. The resulting workflows were run, inspected, debugged, and evaluated in Google Colab. Final interpretations and representations of results require human review.
+
+This is an educational research prototype, not a production incident-management system.
