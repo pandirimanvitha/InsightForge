@@ -1,0 +1,369 @@
+{
+  "mode": "fresh_public_web",
+  "model_requested": "google/gemini-2.5-flash-lite",
+  "llm_calls_attempted": 5,
+  "web_searches": [
+    {
+      "query": "ROI of AI customer support copilot B2B SaaS",
+      "results_returned": 4,
+      "unique_sources_added": 4
+    },
+    {
+      "query": "Impact of AI onboarding assistant on customer retention B2B SaaS",
+      "results_returned": 4,
+      "unique_sources_added": 4
+    },
+    {
+      "query": "prioritization of AI features for mid-sized B2B SaaS: customer support copilot vs. onboarding assistant vs. predictive analytics",
+      "results_returned": 4,
+      "unique_sources_added": 4
+    }
+  ],
+  "loaded_saved_results": false,
+  "model_fallbacks_configured": [
+    "google/gemini-2.5-flash-lite",
+    "openai/gpt-4.1-mini"
+  ],
+  "models_served": [
+    {
+      "stage": "Planner",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "Researcher ReAct Decision",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "ToT Initial Comparison",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "ToT Refinement",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "Report Writer",
+      "model": "google/gemini-2.5-flash-lite"
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "id": "WEB-001",
+      "url": "https://www.worknet.ai/blog/how-to-measure-roi-ai-customer-support-b2b-saas",
+      "title": "How to Measure ROI of AI Customer Support in B2B SaaS"
+    },
+    {
+      "id": "WEB-002",
+      "url": "https://agentiveaiagents.com/ai-customer-support-tools-roi-b2b",
+      "title": "AI Customer Support Tools ROI B2B 2026: What Changed?"
+    },
+    {
+      "id": "WEB-003",
+      "url": "https://resources.rework.com/libraries/ai-transformation-saas/4-ai-agents-every-saas-company-needs",
+      "title": "The 4 AI Agents Every B2B SaaS Company Needs"
+    },
+    {
+      "id": "WEB-004",
+      "url": "https://www.successcx.com/learn/roi-of-ai-in-customer-service",
+      "title": "Boost ROI of AI in Customer Service with Proven Strategies"
+    },
+    {
+      "id": "WEB-005",
+      "url": "https://www.chameleon.io/blog/ai-user-onboarding",
+      "title": "AI in User Onboarding: The Complete Guide for B2B SaaS | Chameleon"
+    },
+    {
+      "id": "WEB-006",
+      "url": "https://onramp.ai/blog/ai-customer-onboarding",
+      "title": "AI Customer Onboarding: What the Data Actually Shows"
+    },
+    {
+      "id": "WEB-007",
+      "url": "https://www.linkedin.com/pulse/how-ai-helps-saas-companies-reduce-customer-loss-improve-tarsaria-nz4wf",
+      "title": "How AI Helps SaaS Companies Reduce Customer Loss and Improve Retention"
+    },
+    {
+      "id": "WEB-008",
+      "url": "https://practicalfounders.com/articles/ai-is-slaying-an-old-b2b-saas-dragon-customer-onboarding",
+      "title": "AI is Slaying an Old B2B SaaS Dragon: Customer Onboarding - Practical Founders"
+    },
+    {
+      "id": "WEB-009",
+      "url": "https://www.usefini.com/guides/ai-platforms-b2b-saas-customer-success-renewal",
+      "title": "Best AI Agents for Customer Renewals in B2B SaaS (2026)"
+    },
+    {
+      "id": "WEB-010",
+      "url": "https://medium.com/@Tiffanyomondi/ai-analytics-tools-every-saas-startup-should-use-in-2026-473c6398081c",
+      "title": "Medium"
+    },
+    {
+      "id": "WEB-011",
+      "url": "https://www.worknet.ai/blog/best-ai-onboarding-tools-saas-2026",
+      "title": "10 Best AI Onboarding Tools for SaaS (2026)"
+    },
+    {
+      "id": "WEB-012",
+      "url": "https://www.getmonetizely.com/blogs/the-economics-of-ai-first-b2b-saas-in-2026",
+      "title": "The Economics of AI-First B2B SaaS in 2026"
+    }
+  ],
+  "human_review_required": true,
+  "retrieval_backend": "TF-IDF sparse-vector RAG; fresh in-run only",
+  "memory_documents_indexed": 12,
+  "rag_retrievals": [
+    {
+      "stage": "ReAct Decision",
+      "query": "Which AI feature should a mid-sized B2B SaaS company prioritize: a customer-support copilot, an onboarding assistant, or predictive customer analytics",
+      "evidence_ids": [
+        "WEB-003",
+        "WEB-001",
+        "WEB-002",
+        "WEB-007",
+        "WEB-004",
+        "WEB-006"
+      ]
+    },
+    {
+      "stage": "Critic A",
+      "query": "Which AI feature should a mid-sized B2B SaaS company prioritize: a customer-support copilot, an onboarding assistant, or predictive customer analytics",
+      "evidence_ids": [
+        "WEB-012",
+        "WEB-002",
+        "WEB-001",
+        "WEB-003"
+      ]
+    },
+    {
+      "stage": "Critic B",
+      "query": "Which AI feature should a mid-sized B2B SaaS company prioritize: a customer-support copilot, an onboarding assistant, or predictive customer analytics",
+      "evidence_ids": [
+        "WEB-006",
+        "WEB-007",
+        "WEB-009",
+        "WEB-008"
+      ]
+    },
+    {
+      "stage": "Critic C",
+      "query": "Which AI feature should a mid-sized B2B SaaS company prioritize: a customer-support copilot, an onboarding assistant, or predictive customer analytics",
+      "evidence_ids": [
+        "WEB-006",
+        "WEB-003",
+        "WEB-009",
+        "WEB-001"
+      ]
+    },
+    {
+      "stage": "Report Writer",
+      "query": "Which AI feature should a mid-sized B2B SaaS company prioritize: a customer-support copilot, an onboarding assistant, or predictive customer analytics",
+      "evidence_ids": [
+        "WEB-002",
+        "WEB-001",
+        "WEB-012",
+        "WEB-003",
+        "WEB-009",
+        "WEB-006",
+        "WEB-011",
+        "WEB-004",
+        "WEB-010"
+      ]
+    }
+  ],
+  "elapsed_seconds": 17.92,
+  "plan_queries": [
+    "ROI of AI customer support copilot B2B SaaS",
+    "Impact of AI onboarding assistant on customer retention B2B SaaS",
+    "Value of predictive customer analytics for B2B SaaS churn reduction"
+  ],
+  "planned_alternatives": [
+    {
+      "option": "A",
+      "label": "Customer-Support Copilot",
+      "description": "Focus on improving customer satisfaction and reducing support costs by providing AI-powered assistance to support agents."
+    },
+    {
+      "option": "B",
+      "label": "Onboarding Assistant",
+      "description": "Enhance customer adoption and reduce early-stage churn by guiding new users through product setup and initial usage."
+    },
+    {
+      "option": "C",
+      "label": "Predictive Customer Analytics",
+      "description": "Leverage AI to identify at-risk customers, upsell opportunities, and understand customer behavior to drive revenue and retention."
+    }
+  ],
+  "react_action": {
+    "action": "search",
+    "query": "prioritization of AI features for mid-sized B2B SaaS: customer support copilot vs. onboarding assistant vs. predictive analytics"
+  },
+  "memory_evidence_by_option": {
+    "A": [
+      "WEB-012",
+      "WEB-002",
+      "WEB-001",
+      "WEB-003"
+    ],
+    "B": [
+      "WEB-006",
+      "WEB-007",
+      "WEB-009",
+      "WEB-008"
+    ],
+    "C": [
+      "WEB-006",
+      "WEB-003",
+      "WEB-009",
+      "WEB-001"
+    ]
+  },
+  "source_domain_count": 11,
+  "tot_memory_evidence_ids": [
+    "WEB-001",
+    "WEB-002",
+    "WEB-003",
+    "WEB-006",
+    "WEB-007",
+    "WEB-008",
+    "WEB-009",
+    "WEB-012"
+  ],
+  "initial_tot_rankings": [
+    {
+      "option": "B",
+      "label": "Onboarding Assistant",
+      "score": 3.95,
+      "rationale": "An onboarding assistant directly addresses early-stage churn and improves customer adoption, which is critical for long-term retention and revenue. Evidence highlights benefits like reduced friction, improved satisfaction, and scaling onboarding without headcount. It's positioned as a primary lever for downstream metrics like retention and expansion. Feasibility is good, with AI personalizing onboarding. Risk is moderate, as poor implementation could still lead to user frustration. Cost complexi",
+      "evidence_ids": [
+        "WEB-006",
+        "WEB-007",
+        "WEB-008",
+        "WEB-012"
+      ],
+      "ratings": {
+        "customer_value": 5,
+        "evidence_quality": 4,
+        "feasibility": 4,
+        "risk_and_trust": 3,
+        "cost_complexity": 3
+      }
+    },
+    {
+      "option": "A",
+      "label": "Customer-Support Copilot",
+      "score": 3.7,
+      "rationale": "A customer-support copilot offers a clear ROI through cost reduction (ticket deflection, faster AHT) and revenue protection/expansion (reduced churn, increased expansion). Evidence suggests significant cost savings and payback periods of 3-9 months for mid-market teams. The feasibility is high, with established AI support agent patterns. Risk is moderate, primarily related to the quality of the knowledge base and potential for AI to miss complex issues, impacting trust. Cost complexity is modera",
+      "evidence_ids": [
+        "WEB-001",
+        "WEB-002",
+        "WEB-003"
+      ],
+      "ratings": {
+        "customer_value": 4,
+        "evidence_quality": 4,
+        "feasibility": 4,
+        "risk_and_trust": 3,
+        "cost_complexity": 3
+      }
+    },
+    {
+      "option": "C",
+      "label": "Predictive Customer Analytics",
+      "score": 3.35,
+      "rationale": "Predictive customer analytics can drive revenue through upsell opportunities and revenue protection by identifying at-risk customers. While the potential for high long-term ROI is mentioned (e.g., moving NRR), the direct, immediate impact and measurability might be less straightforward than support or onboarding. Evidence for this specific feature's ROI is less detailed compared to support or onboarding. Feasibility is moderate, requiring robust data infrastructure and sophisticated AI models. R",
+      "evidence_ids": [
+        "WEB-003",
+        "WEB-009"
+      ],
+      "ratings": {
+        "customer_value": 4,
+        "evidence_quality": 3,
+        "feasibility": 3,
+        "risk_and_trust": 3,
+        "cost_complexity": 4
+      }
+    }
+  ],
+  "beam_selected": [
+    {
+      "option": "B",
+      "label": "Onboarding Assistant",
+      "score": 3.95,
+      "rationale": "An onboarding assistant directly addresses early-stage churn and improves customer adoption, which is critical for long-term retention and revenue. Evidence highlights benefits like reduced friction, improved satisfaction, and scaling onboarding without headcount. It's positioned as a primary lever for downstream metrics like retention and expansion. Feasibility is good, with AI personalizing onboarding. Risk is moderate, as poor implementation could still lead to user frustration. Cost complexi",
+      "evidence_ids": [
+        "WEB-006",
+        "WEB-007",
+        "WEB-008",
+        "WEB-012"
+      ],
+      "ratings": {
+        "customer_value": 5,
+        "evidence_quality": 4,
+        "feasibility": 4,
+        "risk_and_trust": 3,
+        "cost_complexity": 3
+      }
+    },
+    {
+      "option": "A",
+      "label": "Customer-Support Copilot",
+      "score": 3.7,
+      "rationale": "A customer-support copilot offers a clear ROI through cost reduction (ticket deflection, faster AHT) and revenue protection/expansion (reduced churn, increased expansion). Evidence suggests significant cost savings and payback periods of 3-9 months for mid-market teams. The feasibility is high, with established AI support agent patterns. Risk is moderate, primarily related to the quality of the knowledge base and potential for AI to miss complex issues, impacting trust. Cost complexity is modera",
+      "evidence_ids": [
+        "WEB-001",
+        "WEB-002",
+        "WEB-003"
+      ],
+      "ratings": {
+        "customer_value": 4,
+        "evidence_quality": 4,
+        "feasibility": 4,
+        "risk_and_trust": 3,
+        "cost_complexity": 3
+      }
+    }
+  ],
+  "tot_refinement_repairs": 0,
+  "refinements": [
+    {
+      "option": "B",
+      "mitigation": "Implement AI-driven personalized onboarding flows that adapt to user roles and company needs to reduce friction and improve initial product adoption. Validate success through metrics like time-to-value and early-stage feature engagement.",
+      "evidence_ids": [
+        "WEB-006",
+        "WEB-007",
+        "WEB-008",
+        "WEB-012"
+      ],
+      "human_approval": true,
+      "read_only": true,
+      "approved_public_data": true
+    },
+    {
+      "option": "A",
+      "mitigation": "Deploy an AI copilot to assist support agents with complex B2B queries, focusing on improving agent efficiency and ticket resolution times. Measure ROI by tracking AHT reduction and true deflection rates for tier-1 issues.",
+      "evidence_ids": [
+        "WEB-001",
+        "WEB-002",
+        "WEB-003"
+      ],
+      "human_approval": true,
+      "read_only": true,
+      "approved_public_data": true
+    }
+  ],
+  "report_memory_evidence_ids": [
+    "WEB-001",
+    "WEB-002",
+    "WEB-003",
+    "WEB-004",
+    "WEB-006",
+    "WEB-007",
+    "WEB-008",
+    "WEB-009",
+    "WEB-010",
+    "WEB-011",
+    "WEB-012"
+  ],
+  "status": "ready_for_human_review",
+  "report_created_utc": "2026-11-22T11:17:28+00:00"
+}
