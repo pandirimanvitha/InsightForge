@@ -3,6 +3,8 @@
 
 **Carnegie Mellon University — Agentic AI Capstone Project**
 
+This repository includes **two complementary educational tracks**: (1) a controlled synthetic incident-triage research baseline with reproducible offline tests, and (2) a separate generalized **live public-web AI product/technology research dashboard**. The live dashboard is not measured by the offline baseline metrics. See [live demo documentation](docs/LIVE_DEMO.md).
+
 ## 1. Project Overview
 
 InsightForge is an AI-assisted research prototype designed to gather evidence, compare technology alternatives, identify risks, and produce grounded recommendations for human review.
@@ -156,3 +158,26 @@ This project was adapted from the **CMU Research Agent Starter Template** and ex
 Generative AI assistance, including ChatGPT, was used in drafting and debugging substantial portions of the implementation and documentation. The resulting workflows were run, inspected, debugged, and evaluated in Google Colab. Final interpretations and representations of results require human review.
 
 This is an educational research prototype, not a production incident-management system.
+
+## 11. Optional Live Public-Web Product Research
+
+The validated live entrypoint is [`demo_ui_strategy_langchain_rag_report_fixed.py`](demo_ui_strategy_langchain_rag_report_fixed.py), with additional dependencies in [`requirements_live.txt`](requirements_live.txt) and setup instructions in [`docs/LIVE_DEMO.md`](docs/LIVE_DEMO.md).
+
+It uses LangChain / ChatOpenRouter (Gemini 2.5 Flash-Lite in observed runs), Tavily public-web search, temporary TF-IDF evidence retrieval, bounded ReAct-style action selection, Tree-of-Thought option comparison, sequential specialized roles, source-ID/citation checks, LangSmith tracing and a Gradio Explain Decision interface.
+
+The two observed November 22, 2026 live demonstrations were:
+
+| Question type | Sources | Model calls | Runtime | Provisional highest-ranked option |
+|---|---:|---:|---:|---|
+| B2B SaaS AI feature prioritization | 12 | 5 | 17.92 s | AI onboarding assistant (3.95/5) |
+| Financial-services AI knowledge assistant build/buy/hybrid | 10 | 6 | 13.13 s | Purchase existing platform (3.80/5) |
+
+Both had `status=ready_for_human_review`; raw observed audit outputs are saved in [`evaluation/live_web/`](evaluation/live_web/). The second case required one format repair to fix report citations. The score values are LLM judgments, not experimentally validated business outcomes. Source-ID validation does not prove that all claims are factually supported. Neither the limited live ReAct action nor sequential agent coordination should be described as parallel, fully autonomous multi-agent execution.
+
+### Live quick start
+
+Install `pip install -r requirements_live.txt`, then provide `OPENROUTER_API_KEY`, `TAVILY_API_KEY` and `INSIGHTFORGE_DEMO_PASSWORD` **outside GitHub**. Run `python demo_ui_strategy_langchain_rag_report_fixed.py`. Follow `docs/LIVE_DEMO.md` for optional LangSmith setup and details. The original offline suite still runs with `python -m pytest tests -q`.
+
+### Data and academic transparency
+
+Only public-web evidence is retrieved by the live application; no actual production incidents or employer/customer data are included. The capstone was built and documented with substantial generative AI assistance; code and generated conclusions should be independently reviewed in accordance with course policies.
