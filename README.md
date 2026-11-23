@@ -1,183 +1,148 @@
 # InsightForge
 ### AI Research Assistant for Product and Technology Decisions
 
-**Carnegie Mellon University — Agentic AI Capstone Project**
+**CMU Agentic AI Program — Research Assistant Capstone**
 
-This repository includes **two complementary educational tracks**: (1) a controlled synthetic incident-triage research baseline with reproducible offline tests, and (2) a separate generalized **live public-web AI product/technology research dashboard**. The live dashboard is not measured by the offline baseline metrics. See [live demo documentation](docs/LIVE_DEMO.md).
+## Why I chose this project
 
-## 1. Project Overview
+For my capstone, I wanted to build a research assistant that could help product managers and technical teams compare different technology options instead of just giving a quick answer to a question.
 
-InsightForge is an AI-assisted research prototype designed to gather evidence, compare technology alternatives, identify risks, and produce grounded recommendations for human review.
+In many technical decisions, the difficult part is not finding one solution. It is understanding the alternatives, checking whether there is enough evidence, and identifying the risks before recommending something. I wanted InsightForge to help with that research process while leaving the final decision to a person.
 
-The capstone investigates the research question:
+I started with a smaller, controlled question: *How should a hypothetical fintech company approach AI-assisted incident classification and routing?* I compared three options:
 
-**Should a hypothetical fintech organization adopt AI-assisted incident classification and routing?**
+- Rule-based incident classification
+- RAG-assisted classification
+- Agentic investigation with human oversight
 
-Three approaches are evaluated:
+For that first version, I used eight synthetic research records. I did not use actual company incidents or customer information.
 
-- **Option A:** Rule-based incident classification
-- **Option B:** Retrieval-Augmented Generation (RAG)-assisted classification
-- **Option C:** Agentic incident investigation with human oversight
+After I had the initial workflow and tests working, I extended InsightForge to research broader product and technology questions using live public-web searches. The live version does not rely on the original incident-triage documents to generate answers.
 
-The project uses eight synthetic research records. No real company incidents, customer records, or production systems are involved.
+## What InsightForge does
 
-## 2. System Architecture
+The live version accepts a research question and works through several stages:
 
-InsightForge combines several agentic AI concepts:
+1. **Planner:** Defines three alternatives and prepares search queries.
+2. **Researcher:** Searches the public web using Tavily. It also uses a bounded ReAct-style decision to decide whether one more search is needed.
+3. **Evidence memory and Critic:** Stores the results from that run in a temporary TF-IDF retrieval index, retrieves relevant evidence, and checks source coverage.
+4. **Tree-of-Thought comparison:** Scores the three alternatives using weighted criteria, keeps the top two, and proposes ways to reduce their risks.
+5. **Report Writer:** Produces a recommendation with source references and flags it for human review. An invalid citation format can trigger one correction attempt.
 
-**ReAct Research**
+The Gradio interface shows the sources, agent timeline, report, and audit information. There is also an **Explain Decision** feature. Once a run is complete, I can ask why an alternative was ranked first. It uses the evidence from that run and makes a new LLM call without searching the web again.
 
-A bounded research loop allows an LLM to select read-only search or finish actions. Actions are validated and logged. The recorded example reached its step limit, after which additional evidence recovery was performed.
+The four agent roles are coordinated **sequentially**, not as four parallel processes. The live ReAct step is deliberately limited; the earlier offline prototype includes a separate multi-step ReAct controller.
 
-**Retrieval-Augmented Generation**
+## Course concepts I used
 
-Semantic retrieval uses `sentence-transformers/all-MiniLM-L6-v2` embeddings and cosine similarity to locate relevant synthetic evidence. A keyword-based retrieval implementation provides a comparison baseline.
-
-**Tree-of-Thought Evaluation**
-
-Three predefined alternatives are evaluated using weighted criteria. A beam-search-style process retains two promising options for further refinement.
-
-Mitigation proposals are independently validated against source evidence and mandatory safety policies. Numerical scores are illustrative, not measured business performance.
-
-**Four-Agent Workflow**
-
-1. **Planner Agent:** Defines research tasks and required evidence.
-2. **Researcher Agent:** Retrieves and verifies source documents.
-3. **Critic / Evaluator Agent:** Identifies evidence gaps, evaluates alternatives, and enforces constraints.
-4. **Report Writer Agent:** Produces a grounded research brief for human review.
-
-The Critic can request up to three additional read-only evidence searches.
-
-The integrated offline workflow uses deterministic agent roles. Separate components support optional LLM-driven ReAct actions, grounded writing, and mitigation proposals.
-
-## 3. Safety and Reliability
-
-The prototype includes:
-
-- Human approval requirements for high-severity incident recommendations
-- Read-only research operations
-- Synthetic or otherwise approved data restrictions
-- Source integrity and citation checks
-- Bounded research steps and follow-up searches
-- Rejection of altered evidence
-- Abstention when mandatory evidence is unavailable
-- Conservative rejection of out-of-scope questions
-- Explicit uncertainty and human-review requirements
-
-**InsightForge does not change incident routing or execute production actions.**
-
-## 4. Evaluation Results
-
-The system was evaluated using ten controlled synthetic scenarios and eight retrieval benchmark questions.
-
-| Metric | Observed result |
+| Course topic | How I used it |
 |---|---|
-| Scenarios passing before scope validation | 9/10 |
-| Scenarios passing after scope validation | 10/10 |
-| Automated regression tests | 41 passed |
-| Initial required-evidence coverage | 64.6% |
-| Full-workflow required-evidence coverage | 87.5% |
-| Evidence coverage improvement | +22.9 percentage points |
-| Additional searches across evaluation | 13 |
-| Median offline scenario runtime | 18.535 ms |
+| Tool calling | The application runs web research tools and uses their outputs in later stages. |
+| ReAct reasoning | A model selects an allowed research action; Python validates and executes it. The original prototype also supports multiple action–observation steps. |
+| Knowledge and memory | The original case study compares keyword and semantic retrieval. The live app uses temporary TF-IDF retrieval over newly collected sources. |
+| Tree of Thought | Three alternatives are evaluated, with the top two selected for further refinement. |
+| Multi-agent coordination | Planner, Researcher, Critic/Evaluator, and Report Writer have separate responsibilities and pass results to each other. |
+| Safety | Research is read-only, citations and source IDs are checked, repeated actions are limited, and recommendations require human review. |
 
-### Keyword vs. Semantic Retrieval
+I chose bounded steps and read-only tools because I wanted to keep the demo manageable and avoid having a research assistant take actions on real systems.
 
-| Metric | Keyword Search | Semantic Retrieval |
-|---|---|---|
-| Top-1 accuracy | 87.5% | 87.5% |
-| Top-3 recall | 100% | 100% |
-| Mean reciprocal rank | 0.938 | 0.938 |
+## What I tested
 
-Both retrieval approaches achieved identical aggregate scores on the eight-question benchmark, although their ranking errors differed.
+I kept the evaluation of the original synthetic project separate from the live-web demo because they test different things.
 
-These measurements demonstrate prototype behavior on a small synthetic dataset. They do not establish production-level classification accuracy, real-world financial benefits, or superior performance of semantic retrieval.
+### Original synthetic case study
 
-The median runtime reflects the offline evaluation, not end-to-end latency for a live LLM workflow.
+The earlier controlled evaluation recorded:
 
-## 5. Technology Stack
+| Measure | Result |
+|---|---:|
+| Automated tests | 41 passed |
+| Controlled scenarios after scope validation | 10/10 passed |
+| Required-evidence coverage before recovery | 64.6% |
+| Required-evidence coverage after recovery | 87.5% |
+| Keyword retrieval — top 1 | 7/8 |
+| Semantic retrieval — top 1 | 7/8 |
+| Both retrieval methods — top 3 | 8/8 |
 
-- Python
-- Google Colab
-- GitHub
-- NumPy
-- Sentence Transformers
-- OpenRouter for optional LLM interactions
-- Pytest for automated testing
+The additional evidence recovery improved required-evidence coverage by 22.9 percentage points. Both retrieval approaches achieved the same overall scores on this small benchmark. These are results from synthetic examples, not evidence of how the system would perform in a real company's incident workflow.
 
-## 6. Repository Structure
+### Live public-web research
 
-- `research_agent/` — Research clients, ReAct agent, semantic retrieval, ToT evaluation, four-agent workflow, and safety checks
-- `data/synthetic/` — Synthetic research evidence
-- `tests/` — Automated regression tests
-- `evaluation/` — Scenario evaluation and retrieval benchmark results
-- `examples/` — Research briefs, decision summaries, and execution traces
-- `notebooks/` — Google Colab development notebook
-- `requirements.txt` — Python dependencies
+I also tested two different product-management research questions on November 22, 2026:
 
-## 7. Running the Project
-
-Clone or download the repository and install its dependencies:
-
-`pip install -r requirements.txt`
-
-Run the offline automated tests:
-
-`python -m pytest tests -q`
-
-For the interactive research demonstrations, open `notebooks/InsightForge_Capstone.ipynb` in Google Colab.
-
-The notebook contains the development workflow, saved research replay, four-agent demonstration, safety tests, and evaluation steps. Some notebook cells use a Google Drive project path and must be adjusted for another environment.
-
-Offline tests do not require an OpenRouter API key. Optional live model calls require a separately configured API key and may be affected by provider availability and rate limits.
-
-## 8. Key Findings
-
-The prototype demonstrated that:
-
-- A Critic-guided recovery step can improve required-evidence coverage.
-- Independent policy validation can prevent unsupported recommendations.
-- Out-of-scope questions can be rejected before research begins.
-- Four coordinated roles can produce a traceable research-to-decision workflow.
-- More complex retrieval methods do not necessarily outperform simpler baselines on a small dataset.
-
-The illustrative ToT comparison provisionally ranked rule-based triage highest, with a refined score of 3.487/5. This is a hypothetical rubric result and not a measured superiority claim.
-
-## 9. Limitations and Future Work
-
-The research collection contains only eight synthetic documents. The system has not been tested with real incident streams, measured business outcomes, or independently verified industry research.
-
-The Planner and scope guard are specific to incident-triage research. The integrated offline workflow is deterministic rather than a fully autonomous multi-agent system.
-
-Future improvements include larger authorized datasets, independent claim verification, broader scope validation, human usability testing, measured LLM latency, and controlled pilot studies.
-
-## 10. Acknowledgments and Development Transparency
-
-This project was adapted from the **CMU Research Agent Starter Template** and extended through iterative experimentation with retrieval, reasoning, agent coordination, and evaluation techniques.
-
-Generative AI assistance, including ChatGPT, was used in drafting and debugging substantial portions of the implementation and documentation. The resulting workflows were run, inspected, debugged, and evaluated in Google Colab. Final interpretations and representations of results require human review.
-
-This is an educational research prototype, not a production incident-management system.
-
-## 11. Optional Live Public-Web Product Research
-
-The validated live entrypoint is [`demo_ui_strategy_langchain_rag_report_fixed.py`](demo_ui_strategy_langchain_rag_report_fixed.py), with additional dependencies in [`requirements_live.txt`](requirements_live.txt) and setup instructions in [`docs/LIVE_DEMO.md`](docs/LIVE_DEMO.md).
-
-It uses LangChain / ChatOpenRouter (Gemini 2.5 Flash-Lite in observed runs), Tavily public-web search, temporary TF-IDF evidence retrieval, bounded ReAct-style action selection, Tree-of-Thought option comparison, sequential specialized roles, source-ID/citation checks, LangSmith tracing and a Gradio Explain Decision interface.
-
-The two observed November 22, 2026 live demonstrations were:
-
-| Question type | Sources | Model calls | Runtime | Provisional highest-ranked option |
+| Research question | Public sources | LLM calls | Run time | Top-ranked option |
 |---|---:|---:|---:|---|
-| B2B SaaS AI feature prioritization | 12 | 5 | 17.92 s | AI onboarding assistant (3.95/5) |
-| Financial-services AI knowledge assistant build/buy/hybrid | 10 | 6 | 13.13 s | Purchase existing platform (3.80/5) |
+| Which AI feature should a B2B SaaS company prioritize? | 12 | 5 | 17.92 sec | AI onboarding assistant (3.95/5) |
+| Should a financial-services company build, buy, or combine AI knowledge-assistant solutions? | 10 | 6 | 13.13 sec | Purchase an existing platform (3.80/5) |
 
-Both had `status=ready_for_human_review`; raw observed audit outputs are saved in [`evaluation/live_web/`](evaluation/live_web/). The second case required one format repair to fix report citations. The score values are LLM judgments, not experimentally validated business outcomes. Source-ID validation does not prove that all claims are factually supported. Neither the limited live ReAct action nor sequential agent coordination should be described as parallel, fully autonomous multi-agent execution.
+Both runs ended with `ready_for_human_review`. In the second run, the Report Writer initially used incorrectly formatted citations; the validation step caught this and the report passed after one correction. I also tested **Explain Decision** with both research questions.
 
-### Live quick start
+The scores above are comparisons generated by the model, not measured cost savings, product outcomes, or verified return on investment. The actual audit JSON files are saved in [`evaluation/live_web/`](evaluation/live_web/).
 
-Install `pip install -r requirements_live.txt`, then provide `OPENROUTER_API_KEY`, `TAVILY_API_KEY` and `INSIGHTFORGE_DEMO_PASSWORD` **outside GitHub**. Run `python demo_ui_strategy_langchain_rag_report_fixed.py`. Follow `docs/LIVE_DEMO.md` for optional LangSmith setup and details. The original offline suite still runs with `python -m pytest tests -q`.
+## How to run the project
 
-### Data and academic transparency
+### Original offline tests
 
-Only public-web evidence is retrieved by the live application; no actual production incidents or employer/customer data are included. The capstone was built and documented with substantial generative AI assistance; code and generated conclusions should be independently reviewed in accordance with course policies.
+Clone the repository, then install the original dependencies:
+
+```bash
+git clone https://github.com/pandirimanvitha/InsightForge.git
+cd InsightForge
+pip install -r requirements.txt
+python -m pytest tests -q
+```
+
+These tests use the synthetic case study and do not need an OpenRouter or Tavily key.
+
+### Live research dashboard
+
+Install the live-demo dependencies:
+
+```bash
+pip install -r requirements_live.txt
+```
+
+Set the following environment variables **outside the repository**:
+
+- `OPENROUTER_API_KEY` — for the research and reporting model
+- `TAVILY_API_KEY` — for live public-web searches
+- `INSIGHTFORGE_DEMO_PASSWORD` — for the Gradio demo login
+
+For my observed live runs, the primary model was `google/gemini-2.5-flash-lite` through OpenRouter. An optional fallback is `openai/gpt-4.1-mini`. LangSmith tracing can be configured separately.
+
+Then run:
+
+```bash
+python demo_ui_strategy_langchain_rag_report_fixed.py
+```
+
+Open the Gradio URL and sign in using the username `reviewer` and the password you configured. Enter a product or technology research question, run the analysis, and review the report, sources, timeline, and audit. The Explain Decision tab works after a successful research run in the same browser session.
+
+For more setup details and the optional LangSmith settings, see [`docs/LIVE_DEMO.md`](docs/LIVE_DEMO.md).
+
+## Where the main files are
+
+| Location | Purpose |
+|---|---|
+| [`demo_ui_strategy_langchain_rag_report_fixed.py`](demo_ui_strategy_langchain_rag_report_fixed.py) | Live dashboard and research workflow |
+| [`docs/LIVE_DEMO.md`](docs/LIVE_DEMO.md) | Setup instructions and live-demo details |
+| [`requirements_live.txt`](requirements_live.txt) | Additional packages for the live version |
+| [`research_agent/`](research_agent/) | Original ReAct, retrieval, evaluation, coordination, and safety components |
+| [`data/synthetic/`](data/synthetic/) | Synthetic research evidence |
+| [`tests/`](tests/) | Offline automated tests |
+| [`evaluation/`](evaluation/) | Controlled benchmarks and live audit files |
+| [`notebooks/`](notebooks/) | Google Colab development notebook |
+
+## What worked and what I would improve
+
+The biggest improvement for me was moving from a predefined research example to a version that can generate its own alternatives and search for fresh information. Separating the agent roles also made it easier to see where a result came from and where an error happened. The report citation error in the second live test was a useful example: validation caught the problem instead of accepting the first output.
+
+There are still limitations. Many public search results come from vendors or blogs, and having several different domains does not mean the evidence is independent or balanced. Checking that a citation refers to a real retrieved source also does not prove that the source supports the specific claim. The temporary memory is not a long-term knowledge base, and the live workflow does not run agents in parallel. I have not measured a 90% claim-groundedness target or tested actual business outcomes.
+
+If I continue the project, I would focus on checking claims against full sources, handling conflicting viewpoints, adding more evaluation questions, measuring costs, and making human-review rules more specific.
+
+**InsightForge is a research and decision-support prototype. It does not connect to production incident systems or make operational changes. The final recommendation stays with the human user.**
+
+## Acknowledgments
+
+I started from the CMU Research Agent starter template and used ChatGPT extensively for implementation support, debugging, and documentation as the project developed. I ran and inspected the workflows described here, and I've tried to keep the results and limitations tied to what was actually observed.
