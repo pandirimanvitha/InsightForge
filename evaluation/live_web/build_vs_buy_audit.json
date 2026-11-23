@@ -1,0 +1,354 @@
+{
+  "mode": "fresh_public_web",
+  "model_requested": "google/gemini-2.5-flash-lite",
+  "llm_calls_attempted": 6,
+  "web_searches": [
+    {
+      "query": "build vs buy AI knowledge assistant financial services",
+      "results_returned": 4,
+      "unique_sources_added": 4
+    },
+    {
+      "query": "AI platform for financial services security compliance",
+      "results_returned": 4,
+      "unique_sources_added": 4
+    },
+    {
+      "query": "AI knowledge assistant financial services build vs buy vs hybrid time to market cost security implementation feasibility long-term flexibility",
+      "results_returned": 4,
+      "unique_sources_added": 2
+    }
+  ],
+  "loaded_saved_results": false,
+  "model_fallbacks_configured": [
+    "google/gemini-2.5-flash-lite",
+    "openai/gpt-4.1-mini"
+  ],
+  "models_served": [
+    {
+      "stage": "Planner",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "Researcher ReAct Decision",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "ToT Initial Comparison",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "ToT Refinement",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "Report Writer",
+      "model": "google/gemini-2.5-flash-lite"
+    },
+    {
+      "stage": "Report Writer Repair",
+      "model": "google/gemini-2.5-flash-lite"
+    }
+  ],
+  "retrieved_sources": [
+    {
+      "id": "WEB-001",
+      "url": "https://www.appzen.com/blog/build-vs-buy-ai-agents-for-finance-risks-and-rewards",
+      "title": "Build or buy AI agents for finance? Weighing the risks and rewards"
+    },
+    {
+      "id": "WEB-002",
+      "url": "https://neurons-lab.com/articles/build-vs-buy-ai-agents",
+      "title": "Build vs Buy AI Agents: A Guide for Mid-Market FSIs"
+    },
+    {
+      "id": "WEB-003",
+      "url": "https://interexy.com/build-vs-buy-ai-agent-platform",
+      "title": "Build vs Buy: AI Agent Platform for Financial Services – A Strategic Decision Framework | Interexy"
+    },
+    {
+      "id": "WEB-004",
+      "url": "https://www.canidium.com/blog/build-vs.-buy-ai-make-right-investment-without-wasting-time-money",
+      "title": "Build vs. Buy AI: How to Make the Right Investment Without Wasting Time or Money"
+    },
+    {
+      "id": "WEB-005",
+      "url": "https://gradient-labs.ai/guides/best-ai-platforms-for-banking-compliance",
+      "title": "7 best AI platforms for banking compliance in 2026"
+    },
+    {
+      "id": "WEB-006",
+      "url": "https://www.zocks.io/blog/financial-services-data-security",
+      "title": "Financial Services Data Security: AI & Privacy Best Practices | Zocks Blog"
+    },
+    {
+      "id": "WEB-007",
+      "url": "https://www.gooddata.ai/blog/security-and-ai-in-financial-services-balancing-innovation-with-risk-management",
+      "title": "Security and AI in Financial Services | GoodData.AI"
+    },
+    {
+      "id": "WEB-008",
+      "url": "https://www.ncontracts.com/products/compliance-ai-agent",
+      "title": "Compliance AI Agent for Financial Services | Ncontracts"
+    },
+    {
+      "id": "WEB-009",
+      "url": "https://helium42.com/blog/build-vs-buy-ai",
+      "title": "Build vs Buy AI: The Complete Decision Framework for 2026"
+    },
+    {
+      "id": "WEB-010",
+      "url": "https://thesunflowerlab.com/build-vs-buy-knowledge-base-ai-implementation-cost-comparison-2026",
+      "title": "Build vs Buy AI Knowledge Base 2026: Costs & Decision Guide"
+    }
+  ],
+  "human_review_required": true,
+  "retrieval_backend": "TF-IDF sparse-vector RAG; fresh in-run only",
+  "memory_documents_indexed": 10,
+  "rag_retrievals": [
+    {
+      "stage": "ReAct Decision",
+      "query": "Should a financial services company build an AI knowledge assistant in-house, purchase an existing AI platform, or use a hybrid approach? Compare time",
+      "evidence_ids": [
+        "WEB-002",
+        "WEB-001",
+        "WEB-006",
+        "WEB-003",
+        "WEB-007",
+        "WEB-004"
+      ]
+    },
+    {
+      "stage": "Critic A",
+      "query": "Should a financial services company build an AI knowledge assistant in-house, purchase an existing AI platform, or use a hybrid approach? Compare time",
+      "evidence_ids": [
+        "WEB-001",
+        "WEB-009",
+        "WEB-002",
+        "WEB-010"
+      ]
+    },
+    {
+      "stage": "Critic B",
+      "query": "Should a financial services company build an AI knowledge assistant in-house, purchase an existing AI platform, or use a hybrid approach? Compare time",
+      "evidence_ids": [
+        "WEB-002",
+        "WEB-003",
+        "WEB-009",
+        "WEB-001"
+      ]
+    },
+    {
+      "stage": "Critic C",
+      "query": "Should a financial services company build an AI knowledge assistant in-house, purchase an existing AI platform, or use a hybrid approach? Compare time",
+      "evidence_ids": [
+        "WEB-009",
+        "WEB-002",
+        "WEB-001",
+        "WEB-003"
+      ]
+    },
+    {
+      "stage": "Report Writer",
+      "query": "Should a financial services company build an AI knowledge assistant in-house, purchase an existing AI platform, or use a hybrid approach? Compare time",
+      "evidence_ids": [
+        "WEB-009",
+        "WEB-002",
+        "WEB-001",
+        "WEB-004",
+        "WEB-003",
+        "WEB-006",
+        "WEB-007",
+        "WEB-010",
+        "WEB-008"
+      ]
+    }
+  ],
+  "elapsed_seconds": 13.13,
+  "plan_queries": [
+    "build vs buy AI knowledge assistant financial services",
+    "AI platform for financial services security compliance",
+    "hybrid AI implementation financial services benefits risks"
+  ],
+  "planned_alternatives": [
+    {
+      "option": "A",
+      "label": "Build In-House",
+      "description": "Develop a custom AI knowledge assistant from scratch. Offers maximum control and customization but requires significant time, resources, and specialized expertise. Potential for unique competitive advantage."
+    },
+    {
+      "option": "B",
+      "label": "Purchase Existing Platform",
+      "description": "Acquire a pre-built AI knowledge assistant platform. Faster time to market and potentially lower upfront development costs, but may involve less customization and ongoing licensing fees. Vendor lock-in is a risk."
+    },
+    {
+      "option": "C",
+      "label": "Hybrid Approach",
+      "description": "Combine elements of building and buying. For example, use a vendor's core platform and build custom integrations or specific AI models on top. Balances speed and customization, but requires careful integration planning."
+    }
+  ],
+  "react_action": {
+    "action": "search",
+    "query": "AI knowledge assistant financial services build vs buy vs hybrid time to market cost security implementation feasibility long-term flexibility"
+  },
+  "memory_evidence_by_option": {
+    "A": [
+      "WEB-001",
+      "WEB-009",
+      "WEB-002",
+      "WEB-010"
+    ],
+    "B": [
+      "WEB-002",
+      "WEB-003",
+      "WEB-009",
+      "WEB-001"
+    ],
+    "C": [
+      "WEB-009",
+      "WEB-002",
+      "WEB-001",
+      "WEB-003"
+    ]
+  },
+  "source_domain_count": 10,
+  "tot_memory_evidence_ids": [
+    "WEB-001",
+    "WEB-002",
+    "WEB-003",
+    "WEB-009",
+    "WEB-010"
+  ],
+  "initial_tot_rankings": [
+    {
+      "option": "B",
+      "label": "Purchase Existing Platform",
+      "score": 3.8,
+      "rationale": "Purchasing an existing platform offers the fastest time to market, with pilots deliverable in weeks and broader rollouts in months (WEB-009, WEB-010). It is generally more cost-effective upfront as vendors cover platform costs and maintenance (WEB-002). Many vendors provide security attestations and compliance features (WEB-010). However, customization is limited, and there's a risk of vendor lock-in, which can be a significant switching cost (WEB-003). Customer value might be slightly lower if ",
+      "evidence_ids": [
+        "WEB-001",
+        "WEB-002",
+        "WEB-009",
+        "WEB-010"
+      ],
+      "ratings": {
+        "customer_value": 4,
+        "evidence_quality": 4,
+        "feasibility": 4,
+        "risk_and_trust": 3,
+        "cost_complexity": 4
+      }
+    },
+    {
+      "option": "C",
+      "label": "Hybrid Approach",
+      "score": 3.5,
+      "rationale": "A hybrid approach balances speed and customization. It allows for faster initial deployment by leveraging a vendor's core platform while building custom integrations or models on top (WEB-009). This can lead to a good balance of customer value and time to market, potentially achieving initial results within weeks or months (WEB-009, WEB-010). However, it requires careful integration planning and can introduce complexity in managing both vendor dependencies and in-house development. Security and ",
+      "evidence_ids": [
+        "WEB-009",
+        "WEB-010"
+      ],
+      "ratings": {
+        "customer_value": 4,
+        "evidence_quality": 4,
+        "feasibility": 3,
+        "risk_and_trust": 3,
+        "cost_complexity": 3
+      }
+    },
+    {
+      "option": "A",
+      "label": "Build In-House",
+      "score": 2.7,
+      "rationale": "Building in-house offers maximum flexibility and control (WEB-001), allowing for deep customization to specific business logic and proprietary workflows (WEB-001). However, this approach has a significantly longer time to market, estimated at 9-24 months for a robust system (WEB-010), and requires a substantial upfront investment in a specialized and expensive team (WEB-003). Security and compliance must be built and tested from scratch, which can be a multi-quarter investment in regulated indus",
+      "evidence_ids": [
+        "WEB-001",
+        "WEB-003",
+        "WEB-010"
+      ],
+      "ratings": {
+        "customer_value": 3,
+        "evidence_quality": 3,
+        "feasibility": 2,
+        "risk_and_trust": 3,
+        "cost_complexity": 2
+      }
+    }
+  ],
+  "beam_selected": [
+    {
+      "option": "B",
+      "label": "Purchase Existing Platform",
+      "score": 3.8,
+      "rationale": "Purchasing an existing platform offers the fastest time to market, with pilots deliverable in weeks and broader rollouts in months (WEB-009, WEB-010). It is generally more cost-effective upfront as vendors cover platform costs and maintenance (WEB-002). Many vendors provide security attestations and compliance features (WEB-010). However, customization is limited, and there's a risk of vendor lock-in, which can be a significant switching cost (WEB-003). Customer value might be slightly lower if ",
+      "evidence_ids": [
+        "WEB-001",
+        "WEB-002",
+        "WEB-009",
+        "WEB-010"
+      ],
+      "ratings": {
+        "customer_value": 4,
+        "evidence_quality": 4,
+        "feasibility": 4,
+        "risk_and_trust": 3,
+        "cost_complexity": 4
+      }
+    },
+    {
+      "option": "C",
+      "label": "Hybrid Approach",
+      "score": 3.5,
+      "rationale": "A hybrid approach balances speed and customization. It allows for faster initial deployment by leveraging a vendor's core platform while building custom integrations or models on top (WEB-009). This can lead to a good balance of customer value and time to market, potentially achieving initial results within weeks or months (WEB-009, WEB-010). However, it requires careful integration planning and can introduce complexity in managing both vendor dependencies and in-house development. Security and ",
+      "evidence_ids": [
+        "WEB-009",
+        "WEB-010"
+      ],
+      "ratings": {
+        "customer_value": 4,
+        "evidence_quality": 4,
+        "feasibility": 3,
+        "risk_and_trust": 3,
+        "cost_complexity": 3
+      }
+    }
+  ],
+  "tot_refinement_repairs": 0,
+  "refinements": [
+    {
+      "option": "B",
+      "mitigation": "Verify vendor security attestations (e.g., SOC2, ISO) and ensure contractual clarity on data usage and model training practices to address security concerns.",
+      "evidence_ids": [
+        "WEB-010"
+      ],
+      "human_approval": true,
+      "read_only": true,
+      "approved_public_data": true
+    },
+    {
+      "option": "C",
+      "mitigation": "Develop a clear integration strategy and robust testing plan to manage complexity and ensure seamless interaction between vendor platforms and in-house components.",
+      "evidence_ids": [
+        "WEB-009"
+      ],
+      "human_approval": true,
+      "read_only": true,
+      "approved_public_data": true
+    }
+  ],
+  "report_memory_evidence_ids": [
+    "WEB-001",
+    "WEB-002",
+    "WEB-003",
+    "WEB-004",
+    "WEB-006",
+    "WEB-007",
+    "WEB-008",
+    "WEB-009",
+    "WEB-010"
+  ],
+  "report_writer_repairs": 1,
+  "report_writer_first_issue": "Report contains incorrectly formatted citations",
+  "status": "ready_for_human_review",
+  "report_created_utc": "2026-11-22T11:38:05+00:00"
+}
