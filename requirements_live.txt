@@ -1,0 +1,9 @@
+# Additional packages for the optional generalized live research dashboard.
+# Includes the original offline project dependencies.
+-r requirements.txt
+gradio>=5,<7
+langchain
+langchain-openrouter
+langsmith
+tavily-python
+scikit-learn
